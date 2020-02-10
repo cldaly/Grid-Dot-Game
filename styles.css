@@ -26,8 +26,19 @@ body {
 }
 
 .game-area {
-    height: 500px;
-    width: 500px;
     margin: 20px auto;
+    border: 1px solid #000;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    height: 100px;
+    width: 100px;
     border: 1px solid #000;
 }
