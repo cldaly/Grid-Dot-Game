@@ -1,5 +1,6 @@
 const game = document.getElementById("game");
-let player = 0;
+let player = 1;
+let anotherTurn = false;
 
 buildBoard();
 initializeBoard();
@@ -48,20 +49,23 @@ function buildBoard() {
 }
 
 function initializeBoard(){
-    player = 0;
+    player = 1;
     game.addEventListener('click', (event) => {
         if (event.target.id !== '') {
             let el = document.getElementById(event.target.id);
             if (el.classList.contains('unmarked')) {
                 el.classList.remove('unmarked');
-                if (player % 2 == 0) {
+                if (player === 1) {
                     el.classList.add('marked-p1');
+                    
                     checkForComplete()
-                    player++;
                 } else {
                     el.classList.add('marked-p2');
+                    
                     checkForComplete()
-                    player++;
+                }
+                if (!anotherTurn) {
+                    player = (player === 1) ? 2 : 1;
                 }
             }
         }
@@ -69,6 +73,7 @@ function initializeBoard(){
 }
 
 function checkForComplete(){
+    anotherTurn = false;
     for(let row = 0; row < 5; row++) {
         for (let col = 0; col < 5; col++) {
             let box = document.getElementById(`b${row}${col}`);
@@ -85,7 +90,13 @@ function checkForComplete(){
                     !bottom.classList.contains('unmarked') && 
                     !left.classList.contains('unmarked')
                 ) {
-                    box.classList.add('complete-p1')
+                    
+                    anotherTurn = true;
+                    if (player === 1) {
+                        box.classList.add('complete-p1');
+                    } else {
+                        box.classList.add('complete-p2');
+                    }
                 }
             }
         }
