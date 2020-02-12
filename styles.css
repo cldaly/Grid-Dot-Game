@@ -26,11 +26,7 @@ body {
 }
 
 .game-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px auto;
-    /* border: 1px solid #000; */
+    margin: 0 auto;
 }
 
 .row {
@@ -48,7 +44,6 @@ body {
 }
 
 .h-line {
-    cursor: pointer;
     width: 100px;
     height: 2px;
     border: 5px solid #fff;
@@ -56,7 +51,6 @@ body {
 }
 
 .v-line {
-    cursor: pointer;
     height: 100px;
     width: 2px;
     margin: 0 4px;
@@ -64,9 +58,10 @@ body {
     background-color: #eee;
 }
 
-.h-line:hover, .v-line:hover {
+.unmarked:hover {
     background-color: #777;
     transition: background-color 0.05s linear;
+    cursor: pointer;
 }
 
 .v-row {
@@ -89,6 +84,18 @@ body {
     opacity: 0.8;
 }
 
-.marked {
-    background-color: #777;
+.marked-p1 {
+    background-color: #2828bb;
+}
+
+.marked-p2 {
+    background-color: #bb2828;
+}
+
+.complete-p1 {
+    background-color: rgba(40, 40, 187, 0.25);
+}
+
+.complete-p1 {
+    background-color: rgba(187, 40, 40, 0.25);
 }
