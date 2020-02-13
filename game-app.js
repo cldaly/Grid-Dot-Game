@@ -1,6 +1,9 @@
 const game = document.getElementById("game");
-let player = 1;
+let player = 0;
 let anotherTurn = false;
+
+let p1Score = 0;
+let p2Score = 0;
 
 buildBoard();
 initializeBoard();
@@ -49,7 +52,7 @@ function buildBoard() {
 }
 
 function initializeBoard(){
-    player = 1;
+    updatePlayer();
     game.addEventListener('click', (event) => {
         if (event.target.id !== '') {
             let el = document.getElementById(event.target.id);
@@ -64,9 +67,7 @@ function initializeBoard(){
                     
                     checkForComplete()
                 }
-                if (!anotherTurn) {
-                    player = (player === 1) ? 2 : 1;
-                }
+                updatePlayer();
             }
         }
     })
@@ -93,12 +94,57 @@ function checkForComplete(){
                     
                     anotherTurn = true;
                     if (player === 1) {
+                        p1Score++;
                         box.classList.add('complete-p1');
                     } else {
+                        p2Score++;
                         box.classList.add('complete-p2');
                     }
                 }
             }
         }
     }
+}
+
+function updatePlayer(){
+    if (p1Score + p2Score < 25) {
+        if (!anotherTurn) {
+            player = (player === 1) ? 2 : 1;
+        }
+        let playerMessage = `Player ${player}`;
+        if (anotherTurn) {
+            playerMessage += " goes again!";
+        } else {
+            playerMessage += "'s turn";
+        }
+
+        document.getElementById('score-area').innerHTML = `
+            <div class='player-${player}'>
+                <h3>${playerMessage}</h3>
+            </div>
+        `
+    } else {
+        const winner = p1Score > p2Score ? 1 : 2;
+        document.getElementById('score-area').innerHTML = `
+            <div class='player-${player}'>
+                <h3>Player ${winner} wins!</h3>
+                <p>${p1Score} boxes for player 1</p>
+                <p>${p2Score} boxes for player 2</p>
+                <button onClick='resetGame()' id='reset-btn'>Reset Game</button>
+            </div>
+        `
+    }
+}
+
+function resetGame(){
+
+    buildBoard();
+    initializeBoard();
+    
+    player = 0;
+    anotherTurn = false;
+    p1Score = 0;
+    p2Score = 0;
+
+    updatePlayer();
 }

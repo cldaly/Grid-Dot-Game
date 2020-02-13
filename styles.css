@@ -16,6 +16,7 @@ body {
 
 .main {
     text-align: center;
+    width: 100%;
 }
 
 .title {
@@ -26,7 +27,11 @@ body {
 }
 
 .game-area {
+    width: 90%;
     margin: 0 auto;
+    display: flex;
+    align-items: start;
+    justify-content: center;
 }
 
 .row {
@@ -98,4 +103,51 @@ body {
 
 .complete-p2 {
     background-color: rgba(187, 40, 40, 0.25);
+}
+
+#score-area {
+    width: 300px;
+    height: 200px;
+    margin-left: 30px;
+}
+
+.player-1 {
+    background-color: rgba(40, 40, 187, 0.25);
+}
+
+.player-2 {
+    background-color: rgba(187, 40, 40, 0.25);
+}
+
+.player-1, .player-2 {
+    border-radius: 5px;
+    padding: 20px 10px;
+}
+
+.player-1 h3, .player-2 h3 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+#reset-btn {
+    background-color: #fff;
+    border: 1px solid #777;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9em;
+    opacity: 0.8;
+    transition: opacity 0.05s linear;
+}
+
+#reset-btn:hover {
+    opacity: 1;
+    transition: opacity 0.05s linear;
+}
+
+#reset:focus {
+    outline: none;
 }
