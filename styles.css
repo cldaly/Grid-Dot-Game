@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #faefdc;
 }
 
 .main {
@@ -20,6 +21,9 @@ body {
 }
 
 .title {
+    text-align: left;
+    align-self: start;
+    margin: 10px 60px;
     text-transform: uppercase;
     font-size: 2em;
     letter-spacing: 0.05em;
@@ -27,11 +31,17 @@ body {
 }
 
 .game-area {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
-    align-items: start;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#game {
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 10px;
 }
 
 .row {
@@ -107,8 +117,11 @@ body {
 
 #score-area {
     width: 300px;
-    height: 200px;
-    margin-left: 30px;
+    height: fit-content;
+    margin-right: 60px;
+    margin-left: 40px;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
 .player-1 {
@@ -120,14 +133,14 @@ body {
 }
 
 .player-1, .player-2 {
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 20px 10px;
 }
 
 .player-1 h3, .player-2 h3 {
     margin: 0;
     font-weight: 400;
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 
 #reset-btn {
