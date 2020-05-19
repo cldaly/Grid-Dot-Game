@@ -130,7 +130,7 @@ function updatePlayer(){
                 <h3>Player ${winner} wins!</h3>
                 <p>${p1Score} boxes for player 1</p>
                 <p>${p2Score} boxes for player 2</p>
-                <button onClick='resetGame()' id='reset-btn'>Reset Game</button>
+                <button onClick='resetGame()' id='reset-btn'>Play again!</button>
             </div>
         `
     }
